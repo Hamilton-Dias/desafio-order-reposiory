@@ -46,4 +46,14 @@ export default class Order {
   total(): number {
     return this._items.reduce((acc, item) => acc + item.total(), 0);
   }
+
+  changeCustomer(customerId: string): void {
+    this._customerId = customerId;
+    this.validate();
+  }
+
+  removeItem(itemId: string): void {
+    this._items = this._items.filter(item => item.id != itemId);
+    this.validate();
+  }
 }
